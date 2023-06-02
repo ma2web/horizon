@@ -10,7 +10,6 @@ export const reducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
     case 'TOGGLE_SIDEBAR':
       return toggleSidebar(state, action.open);
-
     default:
       return state;
   }

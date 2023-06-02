@@ -1,6 +1,6 @@
 import { AppstoreOutlined } from '@ant-design/icons';
 import { Badge, Typography } from 'antd';
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as FlowArrow } from '../../assets/icons/FlowArrow.svg';
 import { ReactComponent as Notifications } from '../../assets/icons/Notifications.svg';
@@ -12,8 +12,11 @@ import { toggleSidebar } from '../../store/actions';
 import { useStyles } from './DashboardLayout.styles';
 
 const Sidebar: React.FC = () => {
-  const { classes } = useStyles({ hideHorizontalLine: false });
   const { dispatch, state } = useContext(Store);
+  const { classes } = useStyles({
+    hideHorizontalLine: false,
+    toggleSidebar: state.toggleSidebar,
+  });
   const groups = [
     {
       id: 'GROUP_1',
@@ -54,14 +57,15 @@ const Sidebar: React.FC = () => {
     },
   ];
 
-  console.log(state.toggleSidebar);
   return (
     <div className={classes.sidebarContainer}>
+      {/* toggle sidebar button*/}
+
       {/* Logo */}
       <div className={classes.logoContainer}>
         <div
           className={classes.logo}
-          onClick={() => toggleSidebar(!state.toggleSidebar, dispatch)}
+          onClick={() => toggleSidebar(state.toggleSidebar, dispatch)}
         >
           <Storefront />
         </div>
@@ -101,4 +105,4 @@ const Sidebar: React.FC = () => {
   );
 };
 
-export default Sidebar;
+export default memo(Sidebar);
