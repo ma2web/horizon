@@ -36,3 +36,12 @@ export interface LounchpadType {
 export interface LounchpadTableType extends LounchpadType {
   key: string;
 }
+
+export interface AppState {
+  toggleSidebar: boolean;
+}
+
+export interface ToggleSideBarAction {
+  type: 'TOGGLE_SIDEBAR';
+  open: boolean;
+}
