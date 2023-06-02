@@ -17,6 +17,7 @@ export const useStyles = makeStyles<{
       background: 'transparent',
       borderInlineEnd: 'none',
     },
+    width: 20 + '%',
   },
   sidebarContainer: {
     position: 'sticky',
