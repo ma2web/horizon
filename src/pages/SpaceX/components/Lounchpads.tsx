@@ -19,8 +19,6 @@ const Lounchpads = (props: Props) => {
     setLounchpads(data?.launchpads);
   }, [data]);
 
-  console.log(data);
-
   const dataSource: LounchpadType[] = lounchpads;
   const columns: ColumnsType<LounchpadType> = [
     {
