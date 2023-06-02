@@ -42,4 +42,6 @@ This will launch the project and you will be able to access it in your web brows
 
 # TODO
 
-Making `type.ts` file separate and moving to the specefic related directory`
+1- Making `type.ts` file separate and moving to the specefic related directory`
+2* Makeing store management a bit more clean
+3* Also we can move the global command search into the context store
