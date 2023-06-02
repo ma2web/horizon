@@ -2,8 +2,7 @@ import { makeStyles } from '../../tss/makeStyles';
 
 export const useStyles = makeStyles<{
   hideHorizontalLine?: boolean;
-  toggleSidebar?: boolean;
-}>()((theme, { hideHorizontalLine, toggleSidebar }) => ({
+}>()((theme, { hideHorizontalLine }) => ({
   root: {
     display: 'flex',
     minHeight: '100vh',

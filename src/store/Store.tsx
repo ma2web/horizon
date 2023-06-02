@@ -1,14 +1,16 @@
 import React, { createContext, useReducer } from 'react';
-import { AppState } from '../types/types';
-import { AppAction, reducer } from './reducers';
+import { AppState, InitialStateType } from '../types/types';
+import { reducer } from './reducers/GlobalSearch';
 
 interface StoreContextProps {
   state: AppState;
-  dispatch: React.Dispatch<AppAction>;
+  dispatch: React.Dispatch<any>;
 }
 
-const initialState: AppState = {
-  toggleSidebar: false,
+const initialState: InitialStateType = {
+  globarSearch: {
+    toggleModal: false,
+  },
 };
 
 export const Store = createContext<StoreContextProps>({

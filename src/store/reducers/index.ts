@@ -1,1 +1,1 @@
-export * from './SidebarReducers';
+export * from './GlobalSearch';

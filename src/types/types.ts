@@ -38,10 +38,18 @@ export interface LounchpadTableType extends LounchpadType {
 }
 
 export interface AppState {
-  toggleSidebar: boolean;
+  globarSearch: {
+    toggleModal: boolean;
+  };
 }
 
-export interface ToggleSideBarAction {
-  type: 'TOGGLE_SIDEBAR';
+export interface ToggleModalAction {
+  type: 'TOGGLE_MODAL';
   open: boolean;
+}
+
+export interface InitialStateType {
+  globarSearch: {
+    toggleModal: boolean;
+  };
 }

@@ -2,13 +2,21 @@
 import { useQuery } from '@apollo/client';
 import { Button, Input, InputRef, Modal, Space, Tag, Tooltip } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React, {
+  ReactNode,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { ReactComponent as MagnifyingGlass } from '../../../assets/icons/MagnifyingGlass.svg';
 import { ReactComponent as MagnifyingGlassFilled } from '../../../assets/icons/MagnifyingGlassFilled.svg';
 import { ReactComponent as PencilCircle } from '../../../assets/icons/PencilCircle.svg';
 import { ReactComponent as Trash } from '../../../assets/icons/Trash.svg';
 import { LOAD_ROCKETS } from '../../../graphql/operations/queries/rockets';
 import useDebounce from '../../../hooks/useDebounce';
+import { Store } from '../../../store/Store';
+import { toggleModal } from '../../../store/actions/GlobalSearch';
 import { CountryColor, RocketType } from '../../../types/types';
 import {
   handleKeyDown,
@@ -19,7 +27,6 @@ import AppTypography from '../../typography/AppTypography';
 import { useStyles } from './SearchModal.styles';
 
 const SearchModal: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const mainInputRef = useRef<InputRef>(null);
   const { data } = useQuery(LOAD_ROCKETS);
   const [search, setSearch] = useState<string>('');
@@ -27,10 +34,13 @@ const SearchModal: React.FC = () => {
   const [rockets, setRockets] = useState<RocketType[]>([]);
   const [showNoData, setShowNoData] = useState<boolean>(false);
   const { classes } = useStyles({ hideHorizontalLine: false });
+  const { state, dispatch } = useContext(Store);
+  const toggleShowModal = () =>
+    toggleModal(state.globarSearch.toggleModal, dispatch);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      handleKeyDown(event, 'k', showModal);
+      handleKeyDown(event, 'k', toggleShowModal);
     };
 
     document.addEventListener('keydown', onKeyDown);
@@ -60,19 +70,11 @@ const SearchModal: React.FC = () => {
     }
   }, [debouncedSearchTerm]);
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-    setSearch('');
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-    setSearch('');
-  };
+  useEffect(() => {
+    if (state.globarSearch.toggleModal && mainInputRef.current) {
+      mainInputRef.current.focus();
+    }
+  }, [state.globarSearch.toggleModal]);
 
   const dataSource: RocketType[] = rockets;
   const columns: ColumnsType<RocketType> = [
@@ -105,12 +107,6 @@ const SearchModal: React.FC = () => {
     },
   ];
 
-  useEffect(() => {
-    if (isModalOpen && mainInputRef.current) {
-      mainInputRef.current.focus();
-    }
-  }, [isModalOpen]);
-
   return (
     <div>
       <Input
@@ -123,16 +119,16 @@ const SearchModal: React.FC = () => {
             </Tooltip>
           </div>
         }
-        onClick={showModal}
-        onBeforeInput={showModal}
+        onClick={toggleShowModal}
+        onBeforeInput={toggleShowModal}
         value=''
         placeholder='Quick find'
       />
 
       <Modal
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        open={state.globarSearch.toggleModal}
+        onOk={toggleShowModal}
+        onCancel={toggleShowModal}
         footer={false}
         closable={false}
         className={classes.searchModal}

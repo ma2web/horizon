@@ -1,21 +1,17 @@
 import { AppstoreOutlined } from '@ant-design/icons';
 import { Badge, Typography } from 'antd';
-import React, { memo, useContext } from 'react';
+import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as FlowArrow } from '../../assets/icons/FlowArrow.svg';
 import { ReactComponent as Notifications } from '../../assets/icons/Notifications.svg';
 import { ReactComponent as RocketLaunch } from '../../assets/icons/RocketLaunch.svg';
 import { ReactComponent as Storefront } from '../../assets/icons/Storefront.svg';
 import SearchModal from '../../components/modals/searchModal/SearchModal';
-import { Store } from '../../store/Store';
-import { toggleSidebar } from '../../store/actions';
 import { useStyles } from './DashboardLayout.styles';
 
 const Sidebar: React.FC = () => {
-  const { dispatch, state } = useContext(Store);
   const { classes } = useStyles({
     hideHorizontalLine: false,
-    toggleSidebar: state.toggleSidebar,
   });
   const groups = [
     {
@@ -59,14 +55,9 @@ const Sidebar: React.FC = () => {
 
   return (
     <div className={classes.sidebarContainer}>
-      {/* toggle sidebar button*/}
-
       {/* Logo */}
       <div className={classes.logoContainer}>
-        <div
-          className={classes.logo}
-          onClick={() => toggleSidebar(state.toggleSidebar, dispatch)}
-        >
+        <div className={classes.logo}>
           <Storefront />
         </div>
         <div className={classes.logoText}>
@@ -82,13 +73,13 @@ const Sidebar: React.FC = () => {
       </div>
       {/* Menu Items */}
       <div className={classes.menuItems}>
-        {groups.map((group) => (
-          <div className={classes.group} key={group.id}>
+        {groups.map((group, index) => (
+          <div className={classes.group} key={index}>
             <div className={classes.groupName}>
               <Typography.Text>{group.name}</Typography.Text>
             </div>
-            {group.items.map((item) => (
-              <div className={classes.item} key={item.id}>
+            {group.items.map((item, idx) => (
+              <div className={classes.item} key={idx}>
                 <NavLink to={item.route}>
                   <div className={classes.itemName}>
                     {item.icon}
