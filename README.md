@@ -1,6 +1,12 @@
-# Front-End Assessment
+# Front-End
 
 This project was developed using React.js, TypeScript and Apollo/Client for interfacing to the SpaceX GraphQL examples. It also utilizes the power of Ant Design components for a visually appealing and consistent user interface. Additionally, JSS (JavaScript in CSS) was employed to apply custom styles to the project.
+
+### Shortkeys:
+
+Global search: ⌘ + k
+SpaceX search: ⌘ + f
+Help Button: ⌘ + h
 
 ## Live Demo
 
