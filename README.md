@@ -5,7 +5,9 @@ This project was developed using React.js, TypeScript and Apollo/Client for inte
 ### Shortkeys:
 
 Global search: ⌘ + k
+
 SpaceX search: ⌘ + f
+
 Help Button: ⌘ + h
 
 ## Live Demo
