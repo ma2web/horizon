@@ -39,3 +39,7 @@ This will launch the project and you will be able to access it in your web brows
 ## Code Staructure
 
 ![Logo](https://i.ibb.co/CPhF94D/Screenshot-2023-06-02-at-11-43-14-AM.png)
+
+# TODO
+
+Making `type.ts` file separate and moving to the specefic related directory`
