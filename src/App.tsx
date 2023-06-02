@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ApolloProvider } from '@apollo/client';
+import { ConfigProvider } from 'antd';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { client } from './graphql/apollo-client';
+import Notifications from './pages/Notifications/Notifications';
+import Overview from './pages/Overview/Overview';
+import Settings from './pages/Settings/Settings';
+import SpaceX from './pages/SpaceX/SpaceX';
+import theme from './theme/theme';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <ConfigProvider theme={theme}>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Overview />} />
+            <Route path='/notifications' element={<Notifications />} />
+            <Route path='/spacex' element={<SpaceX />} />
+            <Route path='/settings' element={<Settings />} />
+          </Routes>
+        </BrowserRouter>
+      </ConfigProvider>
+    </ApolloProvider>
   );
-}
+};
 
 export default App;
