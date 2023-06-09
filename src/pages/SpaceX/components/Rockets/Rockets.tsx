@@ -5,9 +5,9 @@ import { ReactComponent as PencilCircle } from 'assets/icons/PencilCircle.svg';
 import { ReactComponent as Trash } from 'assets/icons/Trash.svg';
 import AppTable from 'components/table/AppTable';
 import { LOAD_ROCKETS } from 'graphql/operations/queries/rockets';
-import { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useEffect, useMemo, useState } from 'react';
 import { CountryColor, RocketType } from 'types/types';
-import { useStyles } from '../SpaceX.styles';
+import { useStyles } from '../../SpaceX.styles';
 import Filter from './tools/Filter';
 import SearchInput from './tools/Search';
 
@@ -16,7 +16,7 @@ type Props = {};
 const Rockets = (props: Props) => {
   const { classes } = useStyles();
   const { data, loading, error } = useQuery(LOAD_ROCKETS);
-  const [rockets, setRockets] = useState<RocketType[]>([]);
+  const [rockets, setRockets] = useState<RocketType[]>(data?.rockets);
 
   const dataSource: RocketType[] = useMemo(() => rockets, [rockets]);
   const columns: ColumnsType<RocketType> = useMemo(
@@ -59,19 +59,24 @@ const Rockets = (props: Props) => {
         ),
       },
     ],
-    [classes.button]
+    []
   );
 
-  if (error) return <p>GraphQL query error: {error.message}</p>;
+  useEffect(() => {
+    if (data?.rockets.length > 0) {
+      setRockets(data?.rockets);
+    }
+  }, [data]);
 
+  if (error) return <p>GraphQL query error: {error.message}</p>;
   return (
     <div>
       <div className={classes.tools}>
         <div className={classes.filter}>
-          <Filter setRockets={setRockets} data={data} />
+          <Filter rockets={rockets} setRockets={setRockets} data={data} />
         </div>
         <div className={classes.search}>
-          <SearchInput data={data} setRockets={setRockets} />
+          <SearchInput rockets={rockets} setRockets={setRockets} data={data} />
         </div>
       </div>
       <div className={classes.table}>

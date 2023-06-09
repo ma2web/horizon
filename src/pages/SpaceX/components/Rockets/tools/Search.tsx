@@ -5,13 +5,12 @@ import useDebounce from 'hooks/useDebounce';
 import { memo, useEffect, useRef, useState } from 'react';
 import { SearchInputProps } from 'types/types';
 import { handleKeyDown, searchArrayByPropertyValue } from 'utils/functions';
-import { useStyles } from '../../SpaceX.styles';
+import { useStyles } from '../../../SpaceX.styles';
 
-const SearchInput = ({ setRockets, data }: SearchInputProps) => {
+const SearchInput = ({ setRockets, rockets, data }: SearchInputProps) => {
   const { classes } = useStyles();
   const [search, setSearch] = useState<string>('');
   const debouncedSearchTerm = useDebounce(search, 500);
-
   const searchInputRef = useRef<InputRef>(null);
 
   useEffect(() => {
@@ -29,17 +28,15 @@ const SearchInput = ({ setRockets, data }: SearchInputProps) => {
   useEffect(() => {
     if (debouncedSearchTerm) {
       const result = searchArrayByPropertyValue(
-        data?.rockets,
+        rockets,
         'name',
         debouncedSearchTerm
       );
       setRockets(result);
     } else {
-      console.log('rendered');
-
       setRockets(data?.rockets);
     }
-  }, [debouncedSearchTerm, data?.rockets]);
+  }, [debouncedSearchTerm]);
 
   return (
     <Tooltip title='Press ⌘ + F'>

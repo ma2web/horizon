@@ -58,6 +58,7 @@ export interface InitialStateType {
 
 export type SearchInputProps = {
   setRockets: (data: RocketType[]) => void;
+  rockets: RocketType[];
   data: {
     rockets: RocketType[];
   };

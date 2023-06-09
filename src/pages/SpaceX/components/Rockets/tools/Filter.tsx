@@ -1,26 +1,21 @@
 import { Select, Typography } from 'antd';
 import { memo } from 'react';
-import { RocketType } from 'types/types';
+import { RocketType, SearchInputProps } from 'types/types';
 
-type Props = {
-  setRockets: (data: RocketType[]) => void;
-  data: {
-    rockets: RocketType[];
-  };
-};
+interface Props extends SearchInputProps {}
 
-const Filter = ({ data, setRockets }: Props) => {
+const Filter = ({ setRockets, data }: Props) => {
   const handleFilter = (value: string) => {
     if (value === 'All') {
       setRockets(data?.rockets);
       return;
     }
 
-    const filteredList = data?.rockets?.filter(
+    const result = data?.rockets?.filter(
       (rocket: RocketType) => rocket.country === value
     );
 
-    setRockets(filteredList);
+    setRockets(result);
   };
 
   return (
