@@ -1,1 +1,1 @@
-export * from './GlobalSearch';
+export { globalSearchReducer } from './GlobalSearch';

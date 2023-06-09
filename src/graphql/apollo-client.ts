@@ -11,7 +11,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const link = from([
   errorLink,
-  new HttpLink({ uri: 'https://spacex-production.up.railway.app/' }),
+  new HttpLink({ uri: 'https://spacex-production.up.railway.app/' }), // => should read from .env
 ]);
 
 export const client = new ApolloClient({

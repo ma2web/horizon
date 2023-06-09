@@ -9,7 +9,7 @@ const AppTable = ({
   loading,
 }: {
   columns: ColumnsType<any>;
-  dataSource: {}[];
+  dataSource: { key: string | number }[];
   loading?: boolean;
 }) => {
   const { classes } = useStyles();

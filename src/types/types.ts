@@ -10,6 +10,7 @@ export enum RocketStatusType {
 }
 
 export interface RocketType {
+  key: string | number;
   id: string;
   name: string;
   description: string;
@@ -22,6 +23,7 @@ export interface RocketTableType extends RocketType {
 }
 
 export interface LounchpadType {
+  key: string | number;
   id: string;
   location: {
     region: string;
@@ -53,3 +55,10 @@ export interface InitialStateType {
     toggleModal: boolean;
   };
 }
+
+export type SearchInputProps = {
+  setRockets: (data: RocketType[]) => void;
+  data: {
+    rockets: RocketType[];
+  };
+};

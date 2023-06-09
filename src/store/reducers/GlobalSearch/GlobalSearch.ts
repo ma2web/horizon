@@ -1,4 +1,4 @@
-import { AppState, ToggleModalAction } from '../../../types/types';
+import { AppState, ToggleModalAction } from 'types/types';
 
 const toggleModal = (state: AppState, open: boolean): AppState => {
   return {
@@ -7,7 +7,7 @@ const toggleModal = (state: AppState, open: boolean): AppState => {
   };
 };
 
-export const reducer = (
+export const globalSearchReducer = (
   state: AppState,
   action: ToggleModalAction
 ): AppState => {
