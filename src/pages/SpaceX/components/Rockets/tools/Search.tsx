@@ -2,7 +2,7 @@ import { CloseCircleOutlined } from '@ant-design/icons';
 import { Input, InputRef, Tooltip } from 'antd';
 import { ReactComponent as MagnifyingGlass } from 'assets/icons/MagnifyingGlass.svg';
 import useDebounce from 'hooks/useDebounce';
-import { memo, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SearchInputProps } from 'types/types';
 import { handleKeyDown, searchArrayByPropertyValue } from 'utils/functions';
 import { useStyles } from '../../../SpaceX.styles';
@@ -34,9 +34,14 @@ const SearchInput = ({ setRockets, rockets, data }: SearchInputProps) => {
       );
       setRockets(result);
     } else {
-      setRockets(data?.rockets);
+      handleClear();
     }
   }, [debouncedSearchTerm]);
+
+  const handleClear = () => {
+    setSearch('');
+    setRockets(data?.rockets);
+  };
 
   return (
     <Tooltip title='Press ⌘ + F'>
@@ -44,10 +49,7 @@ const SearchInput = ({ setRockets, rockets, data }: SearchInputProps) => {
         prefix={<MagnifyingGlass />}
         suffix={
           search && (
-            <div
-              className={classes.resetSearchIcon}
-              onClick={() => setSearch('')}
-            >
+            <div className={classes.resetSearchIcon} onClick={handleClear}>
               <CloseCircleOutlined />
             </div>
           )
@@ -62,4 +64,4 @@ const SearchInput = ({ setRockets, rockets, data }: SearchInputProps) => {
   );
 };
 
-export default memo(SearchInput);
+export default SearchInput;

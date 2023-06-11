@@ -59,7 +59,7 @@ const Rockets = (props: Props) => {
         ),
       },
     ],
-    []
+    [classes]
   );
 
   useEffect(() => {

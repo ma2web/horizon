@@ -1,5 +1,4 @@
 import { Select, Typography } from 'antd';
-import { memo } from 'react';
 import { RocketType, SearchInputProps } from 'types/types';
 
 interface Props extends SearchInputProps {}
@@ -31,7 +30,7 @@ const Filter = ({ setRockets, data }: Props) => {
   );
 };
 
-export default memo(Filter);
+export default Filter;
 
 const filterOptions = [
   {
