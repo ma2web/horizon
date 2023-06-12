@@ -1,4 +1,4 @@
-import { makeStyles } from '../../tss/makeStyles';
+import { makeStyles } from 'tss/makeStyles';
 
 export const useStyles = makeStyles()((theme) => ({
   table: {},

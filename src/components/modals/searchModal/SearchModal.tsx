@@ -5,6 +5,8 @@ import { ReactComponent as MagnifyingGlass } from 'assets/icons/MagnifyingGlass.
 import { ReactComponent as MagnifyingGlassFilled } from 'assets/icons/MagnifyingGlassFilled.svg';
 import { ReactComponent as PencilCircle } from 'assets/icons/PencilCircle.svg';
 import { ReactComponent as Trash } from 'assets/icons/Trash.svg';
+import AppTable from 'components/table/AppTable';
+import AppTypography from 'components/typography/AppTypography';
 import { LOAD_ROCKETS } from 'graphql/operations/queries/rockets';
 import useDebounce from 'hooks/useDebounce';
 import React, {
@@ -19,8 +21,6 @@ import { Store } from 'store/Store';
 import { toggleModal } from 'store/actions/GlobalSearch';
 import { CountryColor, RocketType } from 'types/types';
 import { handleKeyDown, searchArrayByPropertyValue } from 'utils/functions';
-import AppTable from '../../table/AppTable';
-import AppTypography from '../../typography/AppTypography';
 import { useStyles } from './SearchModal.styles';
 
 const SearchModal: React.FC = () => {
