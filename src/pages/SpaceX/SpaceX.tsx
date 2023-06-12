@@ -1,6 +1,6 @@
 import { TabsProps } from 'antd';
-import AppTabs from '../../components/tabs/AppTabs';
-import DashboardLayout from '../../layouts/DashboardLayout/DashboardLayout';
+import AppTabs from 'components/tabs/AppTabs';
+import DashboardLayout from 'layouts/DashboardLayout/DashboardLayout';
 import { useStyles } from './SpaceX.styles';
 import Lounchpads from './components/Lounchpads/Lounchpads';
 import Rockets from './components/Rockets/Rockets';

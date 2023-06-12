@@ -1,4 +1,4 @@
-import DashboardLayout from '../../layouts/DashboardLayout/DashboardLayout';
+import DashboardLayout from 'layouts/DashboardLayout/DashboardLayout';
 import { useStyles } from './Settings.styles';
 
 type Props = {};

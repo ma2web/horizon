@@ -1,12 +1,12 @@
 import { AppstoreOutlined } from '@ant-design/icons';
 import { Badge, Typography } from 'antd';
+import { ReactComponent as FlowArrow } from 'assets/icons/FlowArrow.svg';
+import { ReactComponent as Notifications } from 'assets/icons/Notifications.svg';
+import { ReactComponent as RocketLaunch } from 'assets/icons/RocketLaunch.svg';
+import { ReactComponent as Storefront } from 'assets/icons/Storefront.svg';
+import SearchModal from 'components/modals/searchModal/SearchModal';
 import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ReactComponent as FlowArrow } from '../../assets/icons/FlowArrow.svg';
-import { ReactComponent as Notifications } from '../../assets/icons/Notifications.svg';
-import { ReactComponent as RocketLaunch } from '../../assets/icons/RocketLaunch.svg';
-import { ReactComponent as Storefront } from '../../assets/icons/Storefront.svg';
-import SearchModal from '../../components/modals/searchModal/SearchModal';
 import { useStyles } from './DashboardLayout.styles';
 
 const Sidebar: React.FC = () => {

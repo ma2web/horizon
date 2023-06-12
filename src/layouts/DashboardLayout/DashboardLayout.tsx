@@ -1,6 +1,6 @@
+import HelpModal from 'components/modals/helpModal/HelpModal';
+import AppTypography from 'components/typography/AppTypography';
 import { ReactNode } from 'react';
-import HelpModal from '../../components/modals/helpModal/HelpModal';
-import AppTypography from '../../components/typography/AppTypography';
 import { useStyles } from './DashboardLayout.styles';
 import Sidebar from './Sidebar';
 

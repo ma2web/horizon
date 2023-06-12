@@ -2,10 +2,10 @@ import { LinkOutlined } from '@ant-design/icons';
 import { useQuery } from '@apollo/client';
 import { Button, Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
+import AppTable from 'components/table/AppTable';
+import { LOAD_LOUNCHPADS } from 'graphql/operations/queries/lounchpads';
 import { useMemo } from 'react';
-import AppTable from '../../../../components/table/AppTable';
-import { LOAD_LOUNCHPADS } from '../../../../graphql/operations/queries/lounchpads';
-import { LounchpadType, RocketStatusType } from '../../../../types/types';
+import { LounchpadType, RocketStatusType } from 'types/types';
 import { useStyles } from '../../SpaceX.styles';
 
 type Props = {};

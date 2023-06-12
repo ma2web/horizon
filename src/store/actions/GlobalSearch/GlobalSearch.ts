@@ -1,4 +1,4 @@
-import { ToggleModalAction } from '../../../types/types';
+import { ToggleModalAction } from 'types/types';
 
 export const toggleModal = (
   open: boolean,
