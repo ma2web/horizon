@@ -1,9 +1,9 @@
 import { TabsProps } from 'antd';
-import AppTabs from 'components/tabs/AppTabs';
-import DashboardLayout from 'layouts/DashboardLayout/DashboardLayout';
-import { useStyles } from './SpaceX.styles';
-import Lounchpads from './components/Lounchpads/Lounchpads';
-import Rockets from './components/Rockets/Rockets';
+import { Tabs } from 'components/tabs';
+import DashboardLayout from 'layouts/dashboard-layout';
+import Lounchpads from './components/lounch-pads';
+import Rockets from './components/rockets';
+import { useStyles } from './styles';
 
 type Props = {};
 
@@ -23,10 +23,11 @@ const SpaceX = (props: Props) => {
     },
   ];
 
+  console.log('Hello, world!');
   return (
     <DashboardLayout title='SpaceX' hideHorizontalLine showHelpModal>
       <div className={classes.tabs}>
-        <AppTabs items={items} />
+        <Tabs items={items} />
       </div>
     </DashboardLayout>
   );

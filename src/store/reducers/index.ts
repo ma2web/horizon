@@ -1,4 +1,4 @@
-import { AppState } from 'types/types';
+import { AppState } from 'types';
 import { globalSearchReducer } from './GlobalSearch';
 
 export const rootReducer = (state: AppState, action: any): AppState => {

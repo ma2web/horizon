@@ -2,7 +2,7 @@ import { Button, Popover, Tooltip } from 'antd';
 import { ReactComponent as Help } from 'assets/icons/Help.svg';
 import { useEffect, useRef } from 'react';
 import { handleKeyDown } from 'utils/functions';
-import { useStyles } from './HelpModal.styles';
+import { useStyles } from './styles';
 
 interface Props {}
 

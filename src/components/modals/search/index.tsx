@@ -5,23 +5,24 @@ import { ReactComponent as MagnifyingGlass } from 'assets/icons/MagnifyingGlass.
 import { ReactComponent as MagnifyingGlassFilled } from 'assets/icons/MagnifyingGlassFilled.svg';
 import { ReactComponent as PencilCircle } from 'assets/icons/PencilCircle.svg';
 import { ReactComponent as Trash } from 'assets/icons/Trash.svg';
-import AppTable from 'components/table/AppTable';
-import AppTypography from 'components/typography/AppTypography';
+import { Table } from 'components/table';
+import { Typography } from 'components/typography';
 import { LOAD_ROCKETS } from 'graphql/operations/queries/rockets';
-import useDebounce from 'hooks/useDebounce';
+import { useDebounce } from 'hooks/use-debounce';
 import React, {
   ReactNode,
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react';
 import { Store } from 'store/Store';
 import { toggleModal } from 'store/actions/GlobalSearch';
-import { CountryColor, RocketType } from 'types/types';
+import { CountryColor, RocketType } from 'types';
 import { handleKeyDown, searchArrayByPropertyValue } from 'utils/functions';
-import { useStyles } from './SearchModal.styles';
+import { useStyles } from './styles';
 
 const SearchModal: React.FC = () => {
   const mainInputRef = useRef<InputRef>(null);
@@ -75,36 +76,45 @@ const SearchModal: React.FC = () => {
     }
   }, [state.globarSearch.toggleModal]);
 
-  const dataSource: RocketType[] = rockets;
-  const columns: ColumnsType<RocketType> = [
-    {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-      render: (text: string) => text,
-      width: 250,
-    },
-    {
-      title: 'Country',
-      key: 'country',
-      dataIndex: 'country',
-      render: (country: string) => (
-        <Tag color={CountryColor[country as keyof typeof CountryColor]}>
-          {country}
-        </Tag>
-      ),
-    },
-    {
-      title: '',
-      key: 'action',
-      render: (_: ReactNode) => (
-        <Space>
-          <Button className={classes.button} icon={<PencilCircle />} href='#' />
-          <Button className={classes.button} icon={<Trash />} href='#' />{' '}
-        </Space>
-      ),
-    },
-  ];
+  const dataSource: RocketType[] = useMemo(() => rockets, [rockets]);
+  const columns: ColumnsType<RocketType> = useMemo(
+    () => [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+        render: (text: string) => text,
+        width: 250,
+      },
+      {
+        title: 'Country',
+        key: 'country',
+        dataIndex: 'country',
+        render: (country: string) => (
+          <Tag color={CountryColor[country as keyof typeof CountryColor]}>
+            {country}
+          </Tag>
+        ),
+      },
+      {
+        title: '',
+        key: 'action',
+        render: (_: ReactNode) => (
+          <Space>
+            <Button
+              className={classes.button}
+              icon={<PencilCircle />}
+              href='#'
+            />
+            <Button className={classes.button} icon={<Trash />} href='#' />{' '}
+          </Space>
+        ),
+      },
+    ],
+    [classes]
+  );
+
+  console.log('SearchModal => rendered');
 
   return (
     <div>
@@ -143,9 +153,10 @@ const SearchModal: React.FC = () => {
           className={classes.searchModalInput}
           placeholder='Start typing to search...'
         />
+
         {dataSource.length > 0 && (
           <div className={classes.searchModalTable}>
-            <AppTable
+            <Table
               dataSource={dataSource.map((item) => ({ ...item, key: item.id }))}
               columns={columns.map((item) => ({ ...item, key: item.key }))}
             />
@@ -153,7 +164,7 @@ const SearchModal: React.FC = () => {
         )}
         {showNoData && (
           <div className={classes.searchModalNoData}>
-            <AppTypography>No Records Found!</AppTypography>
+            <Typography>No Records Found!</Typography>
           </div>
         )}
       </Modal>

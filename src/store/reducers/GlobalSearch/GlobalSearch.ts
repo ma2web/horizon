@@ -1,4 +1,4 @@
-import { AppState, ToggleModalAction } from 'types/types';
+import { AppState, ToggleModalAction } from 'types';
 
 const toggleModal = (state: AppState, open: boolean): AppState => {
   return {

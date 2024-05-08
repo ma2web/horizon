@@ -2,11 +2,11 @@ import { LinkOutlined } from '@ant-design/icons';
 import { useQuery } from '@apollo/client';
 import { Button, Tag } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import AppTable from 'components/table/AppTable';
+import { Table } from 'components/table';
 import { LOAD_LOUNCHPADS } from 'graphql/operations/queries/lounchpads';
 import { useMemo } from 'react';
-import { LounchpadType, RocketStatusType } from 'types/types';
-import { useStyles } from '../../SpaceX.styles';
+import { LounchpadType, RocketStatusType } from 'types';
+import { useStyles } from '../../styles';
 
 type Props = {};
 
@@ -58,7 +58,7 @@ const Lounchpads = (props: Props) => {
   return (
     <div className={classes.root}>
       <div className={classes.table}>
-        <AppTable columns={columns} dataSource={dataSource} loading={loading} />
+        <Table columns={columns} dataSource={dataSource} loading={loading} />
       </div>
     </div>
   );

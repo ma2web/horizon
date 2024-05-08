@@ -1,22 +1,20 @@
-import { Table } from 'antd';
+import { Table as AntTable } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { ReactNode } from 'react';
-import { useStyles } from './AppTable.styles';
+import { useStyles } from './styles';
 
-const AppTable = ({
-  columns,
-  dataSource,
-  loading,
-}: {
+interface Props {
   columns: ColumnsType<any>;
   dataSource: { key: string | number }[];
   loading?: boolean;
-}) => {
+}
+
+export function Table({ columns, dataSource, loading }: Props) {
   const { classes } = useStyles();
 
   return (
     <div className={classes.table}>
-      <Table
+      <AntTable
         columns={columns}
         dataSource={dataSource}
         pagination={false}
@@ -37,6 +35,4 @@ const AppTable = ({
       />
     </div>
   );
-};
-
-export default AppTable;
+}

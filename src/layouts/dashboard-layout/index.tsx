@@ -1,8 +1,8 @@
-import HelpModal from 'components/modals/helpModal/HelpModal';
-import AppTypography from 'components/typography/AppTypography';
+import HelpModal from 'components/modals/help';
+import { Typography } from 'components/typography';
 import { ReactNode } from 'react';
-import { useStyles } from './DashboardLayout.styles';
-import Sidebar from './Sidebar';
+import Sidebar from './components/sidebar';
+import { useStyles } from './styles';
 
 type Props = {
   children: ReactNode;
@@ -26,9 +26,9 @@ const DashboardLayout = ({
       </div>
       <div className={classes.content}>
         <div className={classes.header}>
-          <AppTypography isTitle level={2}>
+          <Typography isTitle level={2}>
             {title}
-          </AppTypography>
+          </Typography>
           {showHelpModal && <HelpModal />}
         </div>
         <div className={classes.children}>{children}</div>

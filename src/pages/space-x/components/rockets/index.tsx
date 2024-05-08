@@ -3,13 +3,13 @@ import { Button, Space, Tag, Typography } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { ReactComponent as PencilCircle } from 'assets/icons/PencilCircle.svg';
 import { ReactComponent as Trash } from 'assets/icons/Trash.svg';
-import AppTable from 'components/table/AppTable';
+import { Table } from 'components/table';
 import { LOAD_ROCKETS } from 'graphql/operations/queries/rockets';
 import { ReactNode, useEffect, useMemo, useState } from 'react';
-import { CountryColor, RocketType } from 'types/types';
-import { useStyles } from '../../SpaceX.styles';
-import Filter from './tools/Filter';
-import SearchInput from './tools/Search';
+import { CountryColor, RocketType } from 'types';
+import { useStyles } from '../../styles';
+import Filter from './components/Filter';
+import SearchInput from './components/Search';
 
 type Props = {};
 
@@ -80,7 +80,7 @@ const Rockets = (props: Props) => {
         </div>
       </div>
       <div className={classes.table}>
-        <AppTable columns={columns} dataSource={dataSource} loading={loading} />
+        <Table columns={columns} dataSource={dataSource} loading={loading} />
       </div>
     </div>
   );

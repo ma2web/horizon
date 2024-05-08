@@ -1,5 +1,5 @@
-import DashboardLayout from 'layouts/DashboardLayout/DashboardLayout';
-import { useStyles } from './Overview.styles';
+import DashboardLayout from 'layouts/dashboard-layout';
+import { useStyles } from './styles';
 
 type Props = {};
 

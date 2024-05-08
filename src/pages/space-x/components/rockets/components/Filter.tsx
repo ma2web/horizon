@@ -1,5 +1,5 @@
 import { Select, Typography } from 'antd';
-import { RocketType, SearchInputProps } from 'types/types';
+import { RocketType, SearchInputProps } from 'types';
 
 interface Props extends SearchInputProps {}
 

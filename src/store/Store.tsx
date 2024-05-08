@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from 'react';
-import { AppState, InitialStateType } from 'types/types';
+import { AppState, InitialStateType } from 'types';
 import { rootReducer } from './reducers';
 
 interface StoreContextProps {

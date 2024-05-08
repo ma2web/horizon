@@ -2,10 +2,10 @@ import { ApolloProvider } from '@apollo/client';
 import { ConfigProvider } from 'antd';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { client } from './graphql/apollo-client';
-import Notifications from './pages/Notifications/Notifications';
-import Overview from './pages/Overview/Overview';
-import Settings from './pages/Settings/Settings';
-import SpaceX from './pages/SpaceX/SpaceX';
+import Notifications from './pages/notifications';
+import Overview from './pages/overview';
+import Settings from './pages/settings';
+import SpaceX from './pages/space-x';
 import { StoreProvider } from './store/Store';
 import theme from './theme/theme';
 

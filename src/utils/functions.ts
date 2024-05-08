@@ -1,4 +1,4 @@
-import { RocketType } from 'types/types';
+import { RocketType } from 'types';
 
 export function searchArrayByPropertyValue(
   arr: RocketType[],
